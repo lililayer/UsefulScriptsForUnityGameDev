@@ -23,24 +23,24 @@ public class WorldTrigger : MonoBehaviour
     	if (used || locked) return;
     	
     	switch (trigger_type) {
-    	
     		case TriggerType.InZone:
-    		    	bool inZone = Vector3.Distance(gm.player.position, transform.position) < distance;
+				bool inZone = Vector3.Distance(gm.player.position, transform.position) < distance;
     			if (inZone) Active();
     			break;
-		case TriggerType.InputToward:
-			RaycastHit rhit;
-			bool hit = false;
-			if (Physics.Raycast(gm.cam.position, gm.cam.forward, out rhit, distance, gm.triggerable)) {
-				if (rhit.transform == transform) {
-					hit = true;
-					gm.toogleTrigger.SetActive(true);
+			case TriggerType.InputToward:
+				RaycastHit rhit;
+				bool hit = false;
+				if (Physics.Raycast(gm.cam.position, gm.cam.forward, out rhit, distance, gm.triggerable)) {
+					if (rhit.transform == transform) {
+						hit = true;
+						gm.toogleTrigger.SetActive(true);
+					}
 				}
-			}
-    			if (hit && Input.GetButtonDown("Use")) Active();
-			break;
-		default:
-			break;
+				if (hit && Input.GetButtonDown("Use")) Active();
+				break;
+			default:
+				Debug.Log("Trigger type not supported");
+				break;
     	}
     }
     
