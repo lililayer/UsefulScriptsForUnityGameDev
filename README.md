@@ -29,6 +29,3 @@ Stabilizes the rotation of flat objects (2D images) in the scene so that they ar
 
 ### CameraController
 Smoothly follow the target. Offset's z axis must be set to -10.
-
-### PointerController
-Make a GameObject point mouse pointer.
